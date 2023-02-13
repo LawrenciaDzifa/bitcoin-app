@@ -37,9 +37,8 @@ const apiKey = '656F6F6C-D8B0-4BEE-AFAE-2872837BBAA2';
 class CoinData {
   //Create your getCoinData() method here.
   Future getCoinData() async {
-   String url = '$coinAPIURL/BTC/USD?apikey=$apiKey';
     http.Response response = await http.get(
-      Uri.parse(url),
+      Uri.parse('$coinAPIURL/BTC/USD?apikey=$apiKey'),
     );
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
