@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:bitcoin_ticker/price_screen.dart';
 
 const List<String> currenciesList = [
   'AUD',
@@ -36,9 +37,9 @@ const apiKey = '656F6F6C-D8B0-4BEE-AFAE-2872837BBAA2';
 
 class CoinData {
   //Create your getCoinData() method here.
-  Future getCoinData() async {
+  Future getCoinData(selectedCurrency) async {
     http.Response response = await http.get(
-      Uri.parse('$coinAPIURL/BTC/USD?apikey=$apiKey'),
+      Uri.parse('$coinAPIURL/BTC/$selectedCurrency?apikey=$apiKey'),
     );
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
